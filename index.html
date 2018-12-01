@@ -1,0 +1,52 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+<!-- Page layout -->
+    <p>Guess what letter I'm thinking of:</p>
+    <p>Wins: <div id="win"></div></p>
+    <br>
+    <p>Losses:<div id="loss"></div></p>
+    <br>
+    <p>Guesses Left:<div id="guessesLeft"></div></p>
+    <br>
+    <p>Guesses so Far:<div id="guessesSoFar"></div></p>
+
+<!-- Javascript -->
+<script>
+    // Guesses
+    var computer = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
+    var user = [];
+    var actualComputer = null 
+
+    // Counters
+    var win = 0;
+    var loss = 0;
+    var guessesLeft = 9;
+
+    // Keyboard press stores in the array
+
+    document.onkeydown = function(press){
+        var guess = String.fromCharCode(event.keyCode);
+        user.push(guess);
+        document.
+    }
+
+        // Check if user guess matches keyboard
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

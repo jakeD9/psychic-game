@@ -31,17 +31,32 @@
     var loss = 0;
     var guessesLeft = 9;
 
+    // Updating the guesses
+    var updateguessesLeft = function (){
+        document.querySelector("#guesses-left").innerHTML = guessesLeft;
+    };
+    var updateactualComputer = function(){
+        actualComputer = computer[Math.floor(Math.random() * computer.length)];
+    };
+
     // Keyboard press stores in the array
 
     document.onkeydown = function(press){
-        var guess = String.fromCharCode(event.keyCode);
+        var guess = String.fromCharCode(press.keyCode).toLowerCase;
         user.push(guess);
-        document.
-    }
-
+        updateguessesLeft();
+        guessesLeft--;
         // Check if user guess matches keyboard
+        if (guess === actualComputer) {
+            win++
+            document.querySelector("#wins").innherHTML = wins;
+        }
 
-
+        else if (guessesLeft === 0) {
+            loss++
+            document.querySelector("#losses").innerHTML = losses;
+        }
+    }
 
 
 

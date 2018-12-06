@@ -1,8 +1,6 @@
 <!doctype <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Psychic Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -11,9 +9,9 @@
 <body>
 <!-- Page layout -->
     <p>Guess what letter I'm thinking of:</p>
-    <p>Wins: <div id="win"></div></p>
+    <p>Wins: <div id="win">0</div></p>
     <br>
-    <p>Losses:<div id="loss"></div></p>
+    <p>Losses:<div id="loss">0</div></p>
     <br>
     <p>Guesses Left:<div id="guessesLeft"></div></p>
     <br>
@@ -21,10 +19,11 @@
 
 <!-- Javascript -->
 <script>
+
     // Guesses
     var computer = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
     var user = [];
-    var actualComputer = null; 
+    var actualComputer = null
 
     // Counters
     var win = 0;
@@ -41,32 +40,40 @@
     var updateguessesSoFar = function (){
         document.getElementById("guessesSoFar").innerHTML = user.join(", ");
     };
+    var pageReset = function() {
+        guessesLeft = 9;
+        user = [];
+        updateguessesLeft();
+        updateactualComputer();
+        updateguessesSoFar();
+    };
 
-
+    // Getting computer guess and updating guess attempts left
     updateactualComputer();
     updateguessesLeft();
 
-    console.log(actualComputer);
 
-    // Keyboard press stores in the array
+    // Keyboard press stores in the array, guess attempts counts down
 
     document.onkeydown = function(press){
         var guess = String.fromCharCode(press.keyCode).toLowerCase();
         user.push(guess);
+        guessesLeft--;
         updateguessesLeft();
         updateguessesSoFar();
-        guessesLeft--;
-        // Check if user guess matches keyboard
+        // Check if user guess matches keyboard and reset the page to stop counter going below 0
         if (guess === actualComputer) {
             win++;
-            document.getElementById("wins").innerHTML = win;
+            document.getElementById("win").innerHTML = win;
+            pageReset();
         }
 
-        if (guessesLeft === 0) {
+        else if (guessesLeft === 0) {
             loss++;
-            document.getElementById("losses").innerHTML = loss;
+            document.getElementById("loss").innerHTML = loss;
+            pageReset();
         }
-    }
+    };
 
 
 

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Psychic Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
 </head>
 <body>
 <!-- Page layout -->
@@ -24,7 +24,7 @@
     // Guesses
     var computer = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
     var user = [];
-    var actualComputer = null 
+    var actualComputer = null; 
 
     // Counters
     var win = 0;
@@ -33,28 +33,38 @@
 
     // Updating the guesses
     var updateguessesLeft = function (){
-        document.querySelector("#guesses-left").innerHTML = guessesLeft;
+        document.getElementById("guessesLeft").innerHTML = guessesLeft;
     };
     var updateactualComputer = function(){
         actualComputer = computer[Math.floor(Math.random() * computer.length)];
     };
+    var updateguessesSoFar = function (){
+        document.getElementById("guessesSoFar").innerHTML = user.join(", ");
+    };
+
+
+    updateactualComputer();
+    updateguessesLeft();
+
+    console.log(actualComputer);
 
     // Keyboard press stores in the array
 
     document.onkeydown = function(press){
-        var guess = String.fromCharCode(press.keyCode).toLowerCase;
+        var guess = String.fromCharCode(press.keyCode).toLowerCase();
         user.push(guess);
         updateguessesLeft();
+        updateguessesSoFar();
         guessesLeft--;
         // Check if user guess matches keyboard
         if (guess === actualComputer) {
-            win++
-            document.querySelector("#wins").innherHTML = wins;
+            win++;
+            document.getElementById("wins").innerHTML = win;
         }
 
-        else if (guessesLeft === 0) {
-            loss++
-            document.querySelector("#losses").innerHTML = losses;
+        if (guessesLeft === 0) {
+            loss++;
+            document.getElementById("losses").innerHTML = loss;
         }
     }
 

@@ -9,9 +9,9 @@
 <body>
 <!-- Page layout -->
     <p>Guess what letter I'm thinking of:</p>
-    <p>Wins: <div id="win">0</div></p>
+    <p>Wins: <div id="win"></div></p>
     <br>
-    <p>Losses:<div id="loss">0</div></p>
+    <p>Losses:<div id="loss"></div></p>
     <br>
     <p>Guesses Left:<div id="guessesLeft"></div></p>
     <br>
@@ -23,7 +23,7 @@
     // Guesses
     var computer = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
     var user = [];
-    var actualComputer = null
+    var actualComputer = 0
 
     // Counters
     var win = 0;
@@ -51,6 +51,7 @@
     // Getting computer guess and updating guess attempts left
     updateactualComputer();
     updateguessesLeft();
+
 
 
     // Keyboard press stores in the array, guess attempts counts down
